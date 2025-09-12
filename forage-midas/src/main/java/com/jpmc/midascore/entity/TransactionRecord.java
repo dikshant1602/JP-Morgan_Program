@@ -16,6 +16,8 @@ public class TransactionRecord {
 
     private Double amount;
 
+    private Double incentive; // <-- NEW FIELD
+
     @ManyToOne
     @JoinColumn(name = "sender_id")
     private UserRecord sender;
@@ -26,12 +28,14 @@ public class TransactionRecord {
 
     public TransactionRecord() {}
 
-    public TransactionRecord(Double amount, UserRecord sender, UserRecord recipient) {
+    // Constructor updated to include incentive
+    public TransactionRecord(Double amount, Double incentive, UserRecord sender, UserRecord recipient) {
         this.amount = amount;
+        this.incentive = incentive;
         this.sender = sender;
         this.recipient = recipient;
     }
-    
+
     // Getters and Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -41,4 +45,6 @@ public class TransactionRecord {
     public void setSender(UserRecord sender) { this.sender = sender; }
     public UserRecord getRecipient() { return recipient; }
     public void setRecipient(UserRecord recipient) { this.recipient = recipient; }
+    public Double getIncentive() { return incentive; } // <-- NEW GETTER/SETTER
+    public void setIncentive(Double incentive) { this.incentive = incentive; } // <-- NEW GETTER/SETTER
 }
