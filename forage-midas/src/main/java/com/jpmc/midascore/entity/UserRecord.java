@@ -1,5 +1,6 @@
 package com.jpmc.midascore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jpmc.midascore.foundation.Balance;
 
 import jakarta.persistence.CascadeType;
@@ -17,6 +18,7 @@ public class UserRecord {
     private Long id;
     private String name;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Balance balance;
 
